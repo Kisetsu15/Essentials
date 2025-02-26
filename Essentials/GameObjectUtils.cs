@@ -7,8 +7,8 @@ namespace Essentials {
         /// Hides the specified GameObject by setting its active state to false.
         /// </summary>
         /// <param name="obj">The GameObject to hide.</param>
-        public static void Hide(GameObject obj) {
-            Preconditions.CheckNotNull(obj, obj.name + " is null");
+        public static void Hide(this GameObject obj) {
+            Preconditions.CheckNotNull(obj, "GameObject is null");
             obj.SetActive(false);
         }
 
@@ -16,8 +16,8 @@ namespace Essentials {
         /// Shows the specified GameObject by setting its active state to true.
         /// </summary>
         /// <param name="obj">The GameObject to show.</param>
-        public static void Show(GameObject obj) {
-            Preconditions.CheckNotNull(obj, obj.name + " is null");
+        public static void Show(this GameObject obj) {
+            Preconditions.CheckNotNull(obj, "GameObject is null");
             obj.SetActive(true);
         }
 
@@ -25,18 +25,18 @@ namespace Essentials {
         /// Hides the GameObject associated with the specified Transform by setting its active state to false.
         /// </summary>
         /// <param name="transform">The Transform whose GameObject to hide.</param>
-        public static void Hide(Transform transform) {
-            Preconditions.CheckNotNull(transform, transform.name + " is null");
-            Hide(transform.gameObject);
+        public static void Hide(this Transform transform) {
+            Preconditions.CheckNotNull(transform, "Transform is null");
+            transform.gameObject.Hide();
         }
 
         /// <summary>
         /// Shows the GameObject associated with the specified Transform by setting its active state to true.
         /// </summary>
         /// <param name="transform">The Transform whose GameObject to show.</param>
-        public static void Show(Transform transform) {
-            Preconditions.CheckNotNull(transform, transform.name + " is null");
-            Show(transform.gameObject);
+        public static void Show(this Transform transform) {
+            Preconditions.CheckNotNull(transform, "Transform is null");
+            transform.gameObject.Show();
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace Essentials {
         /// <param name="obj">The GameObject to check.</param>
         /// <param name="component">The component if found, otherwise null.</param>
         /// <returns>True if the component is found, otherwise false.</returns>
-        public static bool HasComponent<T>(GameObject obj, out T component) {
-            Preconditions.CheckNotNull(obj, obj.name + " is null");
+        public static bool HasComponent<T>(this GameObject obj, out T component) {
+            Preconditions.CheckNotNull(obj, "GameObject is null");
             component = obj.GetComponent<T>();
             return component != null;
         }
@@ -58,8 +58,8 @@ namespace Essentials {
         /// <typeparam name="T">The type of component to check for.</typeparam>
         /// <param name="obj">The GameObject to check.</param>
         /// <returns>True if the component is found, otherwise false.</returns>
-        public static bool HasComponent<T>(GameObject obj) {
-            return HasComponent<T>(obj, out _);
+        public static bool HasComponent<T>(this GameObject obj) {
+            return obj.HasComponent<T>(out _);
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace Essentials {
         /// <param name="transform">The Transform whose GameObject to check.</param>
         /// <param name="component">The component if found, otherwise null.</param>
         /// <returns>True if the component is found, otherwise false.</returns>
-        public static bool HasComponent<T>(Transform transform, out T component) {
-            return HasComponent<T>(transform.gameObject, out component);
+        public static bool HasComponent<T>(this Transform transform, out T component) {
+            return transform.gameObject.HasComponent<T>(out component);
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Essentials {
         /// <typeparam name="T">The type of component to check for.</typeparam>
         /// <param name="transform">The Transform whose GameObject to check.</param>
         /// <returns>True if the component is found, otherwise false.</returns>
-        public static bool HasComponent<T>(Transform transform) {
-            return HasComponent<T>(transform.gameObject);
+        public static bool HasComponent<T>(this Transform transform) {
+            return transform.gameObject.HasComponent<T>();
         }
     }
 }
