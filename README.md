@@ -52,7 +52,7 @@ Preconditions.CheckNotNull(obj, "Object cannot be null");
 #### Simple Timer Usage
 ```csharp
 Timer myTimer = new Timer();
-if (myTimer.SetTimer(5f, false)) {
+if (myTimer.SetTimer(5f)) {
     Debug.Log("Timer completed!");
 }
 ```
