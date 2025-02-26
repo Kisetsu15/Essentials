@@ -1,0 +1,13 @@
+{
+  "name": "com.kisetsu.essentials",
+  "version": "1.0.0",
+  "displayName": "Essentials Utility Library",
+  "description": "A collection of utility scripts for Unity to simplify development.",
+  "unity": "2020.3",
+  "author": {
+    "name": "Kisetsu",
+    "url": "https://github.com/Kisetsu15"
+  },
+  "dependencies": {},
+  "keywords": ["utility", "gameobject", "timers", "extensions"]
+}
